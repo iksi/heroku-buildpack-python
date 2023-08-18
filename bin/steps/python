@@ -9,7 +9,7 @@ runtime-fixer runtime.txt || true
 PYTHON_VERSION=$(cat runtime.txt)
 
 # The location of the pre-compiled python binary.
-PYTHON_URL="${S3_BASE_URL}/${STACK}/runtimes/${PYTHON_VERSION}.tar.gz"
+PYTHON_URL="${S3_BASE_URL}/archive/${STACK}/runtimes/${PYTHON_VERSION}.tar.gz"
 
 if ! curl --output /dev/null --silent --head --fail --retry 3 --retry-connrefused --connect-timeout 10 "${PYTHON_URL}"; then
   puts-warn "Requested runtime '${PYTHON_VERSION}' is not available for this stack (${STACK})."
